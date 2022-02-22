@@ -32,6 +32,7 @@ let words = str.split(',');
 
     for(let i in words){
         words[i] = `<li> ${words[i]} </li>`;
+        console.log(words[i]);
     }
    
     return words.join('\n');
