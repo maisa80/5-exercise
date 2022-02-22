@@ -1,0 +1,38 @@
+/** 
+ * Skapa en knapp "Fetch data".
+ * Som hämtar data från http://codexplained.se/lorem_comma_text.php
+ * 
+ * Datan är en Lorum Ipsum text, där varje ord är separerad med ett kommatecken
+ * Se till att datan hämtas och att varje ord läggs in i en egen listItem <li>
+ * 
+ * Använd er av den inbyggda sträng-funktionen .split()
+ */
+
+let fetchBtn = document.getElementById('fetchBtn');
+let list = document.getElementById('list');
+
+
+
+fetchBtn.addEventListener('click', function () {
+    let url = 'http://codexplained.se/lorem_comma_text.php';
+
+
+    fetch(url)
+
+        .then(response => response.text())
+        .then(data => { list.innerHTML +=  splitUrl(data) })
+        .catch((error) => { console.log(error); })
+
+
+})
+
+// function you can use:
+function splitUrl(str) {
+let words = str.split(',');
+
+    for(let i in words){
+        words[i] = `<li> ${words[i]} </li>`;
+    }
+   
+    return words.join('\n');
+}
